@@ -24,6 +24,6 @@ public class CubeScript : MonoBehaviour {
     void Update () {
 
         this.transform.Rotate(spinSpeed);
-        this.transform.RotateAround(Vector3.zero, spinAxis, 1.0f);
+        this.transform.RotateAround(Vector3.zero, spinAxis, rotateSpeed);
 	}
 }
