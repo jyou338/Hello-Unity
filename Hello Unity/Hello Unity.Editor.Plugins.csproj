@@ -109,21 +109,27 @@
     <Reference Include="UnityEditor.Graphs">
       <HintPath>Library\UnityAssemblies\UnityEditor.Graphs.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.WSA.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.WSA.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>Library\UnityAssemblies\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>Library\UnityAssemblies\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\UnityAssemblies\Mono.Cecil.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Hello Unity.csproj">
-      <Project>{7E8A7725-5961-A1A8-CD65-7B81112D23CA}</Project>
-      <Name>Hello Unity</Name>
-    </ProjectReference>
     <ProjectReference Include="Hello Unity.Plugins.csproj">
       <Project>{B6199E9E-846C-B4A1-DB1D-DE697E34CDD5}</Project>
       <Name>Hello Unity.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="Hello Unity.csproj">
+      <Project>{7E8A7725-5961-A1A8-CD65-7B81112D23CA}</Project>
+      <Name>Hello Unity</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

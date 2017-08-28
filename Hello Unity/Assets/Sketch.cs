@@ -5,6 +5,7 @@ using UnityEngine;
 public class Sketch : MonoBehaviour {
 
     public GameObject myPrefab;
+    public Material myMaterial;
 
 	void Start () {
         int totalCubes = 30;
@@ -22,9 +23,10 @@ public class Sketch : MonoBehaviour {
             float z = 0.0f;
 
             var newCube = (GameObject)Instantiate(myPrefab, new Vector3(x, y, z), Quaternion.identity);
-
+            newCube.GetComponent<CubeScript>().SetTime(i);
             newCube.GetComponent<CubeScript>().SetSize(0.45f * (1.0f - perc));
             newCube.GetComponent<CubeScript>().rotateSpeed = 0.2f + perc*4.0f;
+            newCube.GetComponent<CubeScript>().SetMaterial(myMaterial);
         }
 
     }
