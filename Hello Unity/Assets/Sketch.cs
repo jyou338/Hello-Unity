@@ -19,22 +19,21 @@ public class Sketch : MonoBehaviour {
             float sin = Mathf.Sin(perc * Mathf.PI / 2);
 
             float x = 1.8f + sin * totalDistance;
-            float y = 5.0f;
+            float prefab1Y = 7.0f;
+            float prefab2Y = 3.0f;
             float z = 0.0f;
 
             if (i % 2 == 0) { 
-                var newCube = (GameObject)Instantiate(myPrefab1, new Vector3(x, y, z), Quaternion.identity);
+                var newCube = (GameObject)Instantiate(myPrefab1, new Vector3(x, prefab1Y, z), Quaternion.identity);
                 newCube.GetComponent<CubeScript>().SetTime((i+1)/2);
                 newCube.GetComponent<CubeScript>().SetSize(0.45f * (1.0f - perc));
                 newCube.GetComponent<CubeScript>().rotateSpeed = 0.2f + perc*4.0f;
                 newCube.GetComponent<CubeScript>().SetMaterial(myMaterial);
             } else
             {
-                var newCube = (GameObject)Instantiate(myPrefab2, new Vector3(x, y, z), Quaternion.identity);
-                //newCube.GetComponent<CubeScript>().SetTime(i);
+                var newCube = (GameObject)Instantiate(myPrefab2, new Vector3(x, prefab2Y, z), Quaternion.identity);
                 newCube.GetComponent<CubeScript>().SetSize(0.45f * (1.0f - perc));
                 newCube.GetComponent<CubeScript>().rotateSpeed = 0.2f + perc * 4.0f;
-                //newCube.GetComponent<CubeScript>().SetMaterial(myMaterial);
             }
         }
 
