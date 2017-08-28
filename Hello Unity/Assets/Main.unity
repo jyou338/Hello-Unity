@@ -423,7 +423,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b4ebede2e342949aae769eae02da4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myPrefab: {fileID: 1432611706848168, guid: 84cbb7fb16ecf5e478d748ba3f1ff71b, type: 2}
+  myPrefab1: {fileID: 1432611706848168, guid: 84cbb7fb16ecf5e478d748ba3f1ff71b, type: 2}
+  myPrefab2: {fileID: 1155201941208684, guid: faae4266d38ab6b449c4e0c5208ee8b4, type: 2}
   myMaterial: {fileID: 2100000, guid: b487cb8a991ea274482c494466bd8a8a, type: 2}
 --- !u!4 &1248900651
 Transform:
