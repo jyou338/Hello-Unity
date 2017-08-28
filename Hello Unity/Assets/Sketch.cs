@@ -24,10 +24,10 @@ public class Sketch : MonoBehaviour {
 
             if (i % 2 == 0) { 
                 var newCube = (GameObject)Instantiate(myPrefab1, new Vector3(x, y, z), Quaternion.identity);
-                //newCube.GetComponent<CubeScript>().SetTime(i);
+                newCube.GetComponent<CubeScript>().SetTime((i+1)/2);
                 newCube.GetComponent<CubeScript>().SetSize(0.45f * (1.0f - perc));
                 newCube.GetComponent<CubeScript>().rotateSpeed = 0.2f + perc*4.0f;
-               //newCube.GetComponent<CubeScript>().SetMaterial(myMaterial);
+                newCube.GetComponent<CubeScript>().SetMaterial(myMaterial);
             } else
             {
                 var newCube = (GameObject)Instantiate(myPrefab2, new Vector3(x, y, z), Quaternion.identity);
