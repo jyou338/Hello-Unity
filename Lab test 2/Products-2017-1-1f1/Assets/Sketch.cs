@@ -1,8 +1,10 @@
 using UnityEngine;
 using Pathfinding.Serialization.JsonFx; //make sure you include this using
+using Assets;
 
 public class Sketch : MonoBehaviour {
-    public GameObject myPrefab;
+    public GameObject myPrefab1;
+    public GameObject myPrefab2;
     public string _WebsiteURL = "http://ChronoSpatial.azurewebsites.net/tables/Products?zumo-api-version=2.0.0";
 
     void Start () {
@@ -18,7 +20,7 @@ public class Sketch : MonoBehaviour {
         }
 
         //We can now deserialize into an array of objects - in this case the class we created. The deserializer is smart enough to instantiate all the classes and populate the variables based on column name.
-        Product[] products = JsonReader.Deserialize<Product[]>(jsonResponse);
+        Town[] towns = JsonReader.Deserialize<Town[]>(jsonResponse);
 
         //----------------------
         //YOU WILL NEED TO DECLARE SOME VARIABLES HERE SIMILAR TO THE CREATIVE CODING TUTORIAL
@@ -29,27 +31,32 @@ public class Sketch : MonoBehaviour {
         //----------------------
 
         //We can now loop through the array of objects and access each object individually
-        foreach (Product product in products)
+        foreach (Town town in towns)
         {
             //Example of how to use the object
-            Debug.Log("This products name is: " + product.ProductName);
+            Debug.Log("This products name is: " + town.TownName);
             //----------------------
             //YOUR CODE TO INSTANTIATE NEW PREFABS GOES HERE
             float perc = i / (float)totalCubes;
             float sin = Mathf.Sin(perc * Mathf.PI / 2);
 
-            float x = 1.8f + sin * totalDistance;
-            float y = 5.0f;
-            float z = 0.0f;
+            float x = town.Latitude;
+            float y = town.Altitude;
+            float z = town.Longitude;
 
-            var newCube = (GameObject)Instantiate(myPrefab, new Vector3(x, y, z), Quaternion.identity);
+            // Creates a cube prefab
+            var newSymbol = (GameObject)Instantiate(myPrefab1, new Vector3(x, y, z), Quaternion.identity);
+            if (town.Symbol == "Sphere") // Enters this block of code if the mountain symbol is sphere
+            {
+                // Destroy the cube object and creates a sphere object
+                Destroy(newSymbol);
+                newSymbol = (GameObject)Instantiate(myPrefab2, new Vector3(x, y, z), Quaternion.identity);
+            }
 
-            newCube.GetComponent<CubeScript>().SetSize(.45f * (1.0f - perc));
-            newCube.GetComponent<CubeScript>().rotateSpeed = .2f + perc * 4.0f;
-            newCube.transform.Find("New Text").GetComponent<TextMesh>().text = product.ProductName;//"Hullo Again";
+            newSymbol.GetComponent<CubeScript>().SetSize(town.Size * 0.3f);
+            newSymbol.GetComponent<CubeScript>().rotateSpeed = 0;
+            newSymbol.transform.Find("New Text").GetComponent<TextMesh>().text = town.TownName;
             i++;
-
-            //----------------------
         }
 	}
 	
